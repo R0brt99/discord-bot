@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from time import sleep
 
 class Games(commands.Cog):
 
@@ -37,46 +38,59 @@ class Games(commands.Cog):
             await ctx.message.delete()
             if ctx.author == self.chall_memb:
                 await ctx.send(f'{ctx.author.name} is a Big Idiot!')
+                sleep(2)
                 await ctx.send("You can't challenge yourself!")
                 return
             if rps_opt == 'r':
                 await ctx.send(f'{ctx.author.name} accepts the Challenge!')
+                sleep(2)
                 if self.chall_rps == 'r':
                     await ctx.send(f'{self.chall_memb.name} chose Rock and {ctx.author.name} chose Rock!')
+                    sleep(1)
                     await ctx.send('It is a Draw!')
                 elif self.chall_rps == 'p':
                     await ctx.send(f'{self.chall_memb.name} chose Paper and {ctx.author.name} chose Rock!')
+                    sleep(1)
                     await ctx.send(f'{self.chall_memb.name} is the Winner!')
                 elif self.chall_rps == 's':
                     await ctx.send(f'{self.chall_memb.name} chose Scissors and {ctx.author.name} chose Rock!')
+                    sleep(1)
                     await ctx.send(f'{ctx.author.name} is the Winner!')
                 self.is_chall = True
             elif rps_opt == 'p':
                 await ctx.send(f'{ctx.author.name} accepts the Challenge!')
+                sleep(2)
                 if self.chall_rps == 'r':
                     await ctx.send(f'{self.chall_memb.name} chose Rock and {ctx.author.name} chose Paper!')
+                    sleep(1)
                     await ctx.send(f'{ctx.author.name} is the Winner!')
                 elif self.chall_rps == 'p':
                     await ctx.send(f'{self.chall_memb.name} chose Paper and {ctx.author.name} chose Paper!')
+                    sleep(1)
                     await ctx.send('It is a Draw!')
                 elif self.chall_rps == 's':
                     await ctx.send(f'{self.chall_memb.name} chose Scissors and {ctx.author.name} chose Paper!')
+                    sleep(1)
                     await ctx.send(f'{self.chall_memb.name} is the Winner!')
                 self.is_chall = True
             elif rps_opt == 's':
                 await ctx.send(f'{ctx.author.name} accepts the Challenge!')
+                sleep(2)
                 if self.chall_rps == 'r':
                     await ctx.send(f'{self.chall_memb.name} chose Rock and {ctx.author.name} chose Scissors!')
+                    sleep(1)
                     await ctx.send(f'{self.chall_memb.name} is the Winner!')
                 elif self.chall_rps == 'p':
                     await ctx.send(f'{self.chall_memb.name} chose Paper and {ctx.author.name} chose Scissors!')
+                    sleep(1)
                     await ctx.send(f'{ctx.author.name} is the Winner!')
                 elif self.chall_rps == 's':
                     await ctx.send(f'{self.chall_memb.name} chose Scissors and {ctx.author.name} chose Scissors!')
+                    sleep(1)
                     await ctx.send('It is a Draw')
                 self.is_chall = True
             else:
-                await ctx.send('That')
+                await ctx.send("That's Illegal! Pick Rock (r), Paper (p), or Scissors (s)!")
 
 def setup(client):
     client.add_cog(Games(client))
